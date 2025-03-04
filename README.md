@@ -16,10 +16,10 @@ This repository contains a project on classifying resumes into different categor
 - **Data Collection**: Gather a diverse set of resumes categorized by job roles.
 - **Preprocessing**: Clean the text data by removing irrelevant information, tokenizing the text, and removing stopwords.
 - **Feature Extraction**: Use TF-IDF (Term Frequency-Inverse Document Frequency) to convert the text data into numerical features.
-- **Model Training**: Train a logistic regression model (or other classifiers) on the TF-IDF features to learn the patterns associated with each job category.
+- **Model Training**: Train a **logistic regression model**, **KNN model**, **Random Forest Model**, **Naive Bayes model**, **SVM model** on the TF-IDF features to learn the patterns associated with each job category.
 - **Prediction**: Use the trained model to classify new resumes into the predefined categories.
 
 # Results
-- **Accuracy and Performance**: Evaluate the model's performance using metrics such as accuracy, precision, recall, and F1-score.
+- **Accuracy and Performance**: Evaluate the model's performance using metrics such as accuracy, precision, recall, and F1-score. Confusion Matrix is also shown corresponding to each model.
 - **Insights**: Analyze which features (words) are most indicative of each category.
 
