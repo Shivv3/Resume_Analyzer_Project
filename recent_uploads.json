@@ -1,0 +1,89 @@
+[
+  {
+    "filename": "Hiteshi's Resume.pdf",
+    "model": "naive_bayes",
+    "predicted_class": "Arts",
+    "timestamp": "2025-06-27 17:46",
+    "confidence_scores": {}
+  },
+  {
+    "filename": "Hiteshi's Resume.pdf",
+    "model": "naive_bayes",
+    "predicted_class": "Arts",
+    "timestamp": "2025-06-27 17:26",
+    "confidence_scores": {}
+  },
+  {
+    "filename": "Hiteshi's Resume.pdf",
+    "model": "random_forest",
+    "predicted_class": "Health and fitness",
+    "timestamp": "2025-06-27 17:26",
+    "confidence_scores": {
+      "Advocate": 0.09278350515463916,
+      "Arts": 0.07216494845360825,
+      "Automation Testing": 0.010309278350515464,
+      "Blockchain": 0.0,
+      "Business Analyst": 0.09278350515463916,
+      "Civil Engineer": 0.020618556701030927,
+      "Data Science": 0.10309278350515463,
+      "Database": 0.0,
+      "DevOps Engineer": 0.010309278350515464,
+      "DotNet Developer": 0.03092783505154639,
+      "ETL Developer": 0.0,
+      "Electrical Engineering": 0.020618556701030927,
+      "HR": 0.0,
+      "Hadoop": 0.010309278350515464,
+      "Health and fitness": 0.23711340206185566,
+      "Java Developer": 0.020618556701030927,
+      "Mechanical Engineer": 0.09278350515463916,
+      "Network Security Engineer": 0.0,
+      "Operations Manager": 0.041237113402061855,
+      "PMO": 0.03092783505154639,
+      "Python Developer": 0.0,
+      "SAP Developer": 0.010309278350515464,
+      "Sales": 0.010309278350515464,
+      "Testing": 0.08247422680412371,
+      "Web Designing": 0.010309278350515464
+    }
+  },
+  {
+    "filename": "Hiteshi's Resume.pdf",
+    "model": "random_forest",
+    "predicted_class": "Health and fitness",
+    "timestamp": "2025-06-27 17:25",
+    "confidence_scores": {
+      "Advocate": 0.09278350515463916,
+      "Arts": 0.07216494845360825,
+      "Automation Testing": 0.010309278350515464,
+      "Blockchain": 0.0,
+      "Business Analyst": 0.09278350515463916,
+      "Civil Engineer": 0.020618556701030927,
+      "Data Science": 0.10309278350515463,
+      "Database": 0.0,
+      "DevOps Engineer": 0.010309278350515464,
+      "DotNet Developer": 0.03092783505154639,
+      "ETL Developer": 0.0,
+      "Electrical Engineering": 0.020618556701030927,
+      "HR": 0.0,
+      "Hadoop": 0.010309278350515464,
+      "Health and fitness": 0.23711340206185566,
+      "Java Developer": 0.020618556701030927,
+      "Mechanical Engineer": 0.09278350515463916,
+      "Network Security Engineer": 0.0,
+      "Operations Manager": 0.041237113402061855,
+      "PMO": 0.03092783505154639,
+      "Python Developer": 0.0,
+      "SAP Developer": 0.010309278350515464,
+      "Sales": 0.010309278350515464,
+      "Testing": 0.08247422680412371,
+      "Web Designing": 0.010309278350515464
+    }
+  },
+  {
+    "filename": "Resume_4th_Year_Oncampus.pdf",
+    "model": "naive_bayes",
+    "predicted_class": "Data Science",
+    "timestamp": "2025-06-27 17:11",
+    "confidence_scores": {}
+  }
+]
