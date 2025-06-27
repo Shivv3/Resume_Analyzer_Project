@@ -47,9 +47,3 @@ Thumbs.db
 
 # Jupyter Notebook
 .ipynb_checkpoints
-
-# Models and data (if large)
-*.pkl
-*.joblib
-*.h5
-*.model
