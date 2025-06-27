@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+PyPDF2
+joblib
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+wordcloud
+nltk

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Classification App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Classification</h1>
+        <form id="upload-form" enctype="multipart/form-data">
+            <label for="pdf-upload" class="custom-file-upload">
+                Upload Resume (PDF)
+                <input type="file" id="pdf-upload" name="file" accept="application/pdf" required>
+            </label>
+            <label for="model-select">Select Model:</label>
+            <select id="model-select" name="model">
+                <option value="knn">KNN</option>
+                <option value="naive_bayes">Naive Bayes</option>
+                <option value="svm">SVM</option>
+                <option value="logistic_regression">Logistic Regression</option>
+                <option value="random_forest">Random Forest</option>
+            </select>
+            <button type="submit">Classify Resume</button>
+        </form>
+        <div id="result-section" style="display:none;">
+            <h2>Classification Result</h2>
+            <div id="predicted-class"></div>
+            <div id="confidence-scores"></div>
+            <h3>Extracted Text</h3>
+            <pre id="extracted-text"></pre>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
