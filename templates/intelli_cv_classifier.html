@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IntelliCV Classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f9fc;
+            margin: 0;
+            padding: 0;
+        }
+        .page-flex {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .container {
+            flex: 1 1 0;
+            max-width: none;
+            min-width: 0;
+            width: calc(100vw - 370px - 80px); /* 370px for sidebar+gap, 80px for margins */
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 24px 24px 24px;
+            margin-left: 40px;
+            margin-right: 0;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .header img {
+            width: 180px;
+            margin-bottom: 16px;
+        }
+        .title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #2d3a4b;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #ff7f2a;
+            margin-bottom: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .main-flex {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+        }
+        .main-content {
+            flex: 2;
+        }
+        .sidebar {
+            flex: none;
+            background: #f9fafb;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+            padding: 18px 14px 14px 14px;
+            min-width: 260px;
+            max-width: 260px;
+            margin-top: 32px;
+            margin-right: 40px;
+            height: fit-content;
+        }
+        .sidebar-title {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #2d3a4b;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .recent-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .recent-item {
+            background: #fff;
+            border-radius: 7px;
+            margin-bottom: 10px;
+            padding: 10px 10px 8px 10px;
+            box-shadow: 0 1px 4px rgba(44,62,80,0.06);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .recent-item:hover {
+            background: #ffe5d1;
+        }
+        .recent-filename {
+            font-weight: 500;
+            color: #ff7f2a;
+            font-size: 1rem;
+        }
+        .recent-meta {
+            font-size: 0.92rem;
+            color: #6c7a89;
+        }
+        .recent-pred {
+            font-size: 1.05rem;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .recent-confidence-table {
+            margin-top: 6px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .recent-confidence-table th, .recent-confidence-table td {
+            padding: 2px 6px;
+            text-align: left;
+        }
+        .recent-confidence-table th {
+            background: #ff7f2a;
+            color: #fff;
+        }
+        .recent-confidence-table tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+        .recent-confidence-table tr:nth-child(odd) {
+            background: #fff;
+        }
+        .upload-section {
+            text-align: center;
+            margin: 24px 0;
+        }
+        .upload-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2d3a4b;
+        }
+        .file-input, .model-select {
+            padding: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: #f9fafb;
+            width: 80%;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .model-select {
+            width: 84%;
+            margin-bottom: 18px;
+        }
+        .predict-btn {
+            background: #ff7f2a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .predict-btn:hover {
+            background: #e86c1a;
+        }
+        .result-section {
+            margin-top: 32px;
+            text-align: center;
+        }
+        .result-label {
+            font-size: 1.2rem;
+            color: #2d3a4b;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .predicted-class-box {
+            display: inline-block;
+            background: #ff7f2a;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 18px 38px;
+            margin-bottom: 18px;
+            margin-top: 8px;
+            box-shadow: 0 2px 10px rgba(255,127,42,0.08);
+        }
+        .confidence-table {
+            margin: 0 auto;
+            margin-top: 18px;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 400px;
+            background: #f9fafb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+        }
+        .confidence-table th, .confidence-table td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .confidence-table th {
+            background: #ff7f2a;
+            color: #fff;
+            font-weight: 600;
+        }
+        .confidence-table tr:nth-child(even) {
+            background: #f3f4f6;
+        }
+        .confidence-table tr:nth-child(odd) {
+            background: #fff;
+        }
+        @media (max-width: 1200px) {
+            .container {
+                width: 100%;
+                margin-left: 0;
+            }
+            .sidebar {
+                margin-right: 0;
+            }
+        }
+        @media (max-width: 900px) {
+            .page-flex { flex-direction: column; align-items: stretch; }
+            .container { width: 100%; margin-left: 0; }
+            .sidebar { max-width: 100%; margin-top: 24px; margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-flex">
+        <div class="container">
+            <div class="header">
+                <img src="{{ request.url_for('static', path='resume_banner.png') }}" alt="Resume Classifier Banner">
+                <div class="title">IntelliCV Classifier</div>
+                <div class="subtitle">SMART RESUME CLASSIFICATION</div>
+            </div>
+            <form class="upload-section" method="POST" enctype="multipart/form-data" action="{{ url_for('predict') }}">
+                <label class="upload-label" for="resume">Upload Your Resume (PDF/DOCX):</label>
+                <input class="file-input" type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                <label class="upload-label" for="model">Select Model:</label>
+                <select class="model-select" id="model" name="model" required>
+                    <option value="random_forest">Random Forest</option>
+                    <option value="knn">KNN</option>
+                    <option value="naive_bayes">Naive Bayes</option>
+                    <option value="svm">SVM</option>
+                    <option value="logistic_regression">Logistic Regression</option>
+                </select>
+                <br>
+                <button class="predict-btn" type="submit">Predict</button>
+            </form>
+            {% if prediction %}
+            <div class="result-section">
+                <div class="result-label">Prediction Result</div>
+                {{ prediction|safe }}
+            </div>
+            {% endif %}
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-title">Recent Uploads</div>
+            <ul class="recent-list">
+                {% for entry in recent_uploads or [] %}
+                <li class="recent-item">
+                    <div class="recent-filename">{{ entry.filename }}</div>
+                    <div class="recent-meta">{{ entry.timestamp }} | {{ entry.model.replace('_', ' ').title() }}</div>
+                    <div class="recent-pred">{{ entry.predicted_class }}</div>
+                </li>
+                {% else %}
+                <li style="color:#aaa;text-align:center;">No uploads yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
